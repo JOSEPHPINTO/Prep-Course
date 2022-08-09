@@ -1,0 +1,156 @@
+ En un archivo de texto separado que debes crear, escribe explicaciones de los siguientes conceptos como si se lo estuvieras explicando a un niño de 12 años. Hacer esto te ayudará a descubrir rápidamente cualquier agujero en tu comprensión.
+I
+    * Variables
+    * Strings
+    * Funciones (argumentos, `return`)
+    * Declaraciones `if`
+    * Valores booleanos (`true`, `false`)
+II
+    * `for`
+    * `&&`, `||`, `!`
+III
+    * Arrays
+IV
+    * Objetos
+        * Propiedades
+        * Métodos
+        * Bucle `for…in`
+        * Notación de puntos vs notación de corchetes
+V
+    * `prototype`
+    * _Constructors_ (de Clases)
+VI
+    * Funciones Callback
+
+SOLVE
+
+I
+
+    Variable: Es un espacio que se crea en memoria el cual puede almacenar diferentes tipos de datos y el cual puede recivir modificaciones .
+
+    Strings: Es una cadena de caracteres y un caracter es algo como "a" o un espacio " " un ejemplo de strin puede ser "hola como estas"
+
+    Funciones: proceso el cual esta diseñado para solucionar un problema esfecifico. esta puede recivir argumentos y retornarnos un valor .
+        Argumento: es el valor que enviamos cuando llamamos la funcion este valor se usara en la funcion .
+        return: es la manera en la que retornamos la solucion de la funcion.
+
+    Declaraciones:  
+        esto tambien se llama condionales y  el funcionamiento puede ser extenso pero la funcionalidad es la de evaluar una condicion y ver su valor de vardad, puede ser "true" o "false" si la condicion es If(true){code} se ejecutara el codigo si es "false" se continuara con la siguiente instrucion del codigo.
+
+    valores booleanos: 
+        Estos son "true" = 1 y "false" = 0 con estos podemos hacer muchas operaciones booleanas como 
+
+II
+
+    for:
+        es un ciclo en el cual colocamos una instruccion que esta compuesta por 3 valores, 1 una variable, 2 una condicion de verdad, 3 la sumatoria o resta de la variable, estos 3 deben estar separados siempre por ; ejemplo 
+
+            for(let i = 0 ; i < 2 ; i++ ){
+                code...
+            }
+        
+        el funcionamiento: 
+        primera ejecucion es variable i  es igual a 0 , la condion es true entonces ejecutamos el codigo, y al finalizar suma un valor a la variable.
+        segunda ejecucion: variable i ahora es 1 , la condicion es true aun ejetamos el codigo, y al finalizar suma un valor a la variable 
+        tercera ejecucion: variable i ahora es 2, la condicion es falsa entonces no ejecutamos el codigo y nos salimos del ciclo.
+
+
+    not = ! que es negacion, Or = || que O y And = && que es Y ejemplos:
+        !true = false // solo invierte el valor 
+        true && false = false // en And ambas condiones deben ser verdaderas para que el resultado sea verdadero
+        true !! false = true // en Or si una de las dos o las dos son verdaderas el resultado es verdadero
+
+III
+
+    Array:
+        es un conjunto de elementos(variables) los cuales estan organizados por un indice con el cual podemos aceder a esos elementos especificamente estos siempre estan separados por comas y el array va con corchetes ejemplo: 
+        
+        var arraicito = [2, 4, 7, 5]  
+        elemento 2 tiene el indice 0, el 4 el indice 1 el 7 el indice 2 y el 5 el indice 3 
+        arraicito[2];
+        7 // con el indice accedimos directamente al elemento que queriamos 
+        
+        los array tienen muchos metodos los cuales nos permiten realizar muchas cosas con los elementos del arreglo cosas que normalmente tendriamos que hacer con programacion estructurada.
+    
+IV
+
+    * Objetos
+        Es un contenedor de informacion que suele tener mucha informacion sobre una misma cosa, van encerrados en {} y tienen un sistema de pares que es key:valor la clave es el nombre de la propiedad y el valor es el dato que guardamos el cual puede ser de cualquier tipo.
+        son similares a los arrays pero en ver de indice tiene clave:valor, ejemplo
+            ---code
+                var objetito = {
+                    name: "Jose",
+                    lastname: "Pinto",
+                    password: "ha12345",
+                }  // primero la clave luego los ":" luego el valor que puede ser cualquier tipo de dato y se finaliza con una ",".
+            ---
+
+        * Propiedades : son las  caracteristicas de del objeto.
+
+        * Métodos: son las acciones del objeto.
+
+        * Bucle `for…in`
+             este bucle funciona igual que el for pero la sintaxis es mas simple primero se declara una variable el valor y luego va la palabra reservada "in" finalmente el nombre del objeto.
+             for(let clave in nombreobjeto) // Esto recorrera cada palabra clave del objeto y finalizara cuando haya recorrido todas las claves
+
+
+        * Notación de puntos vs notación de corchetes
+            la notacion se utiliza para aceder a los valores del objeto. 
+            la notacion de puntos funciona similar a array.length  objeto.clave 
+            la notacion de corchetes es similar pero el valor va entre comillas objeto['clave']
+            Estas dos se pueden utilizar para lo mismo la unica particularidad es que la de corchetes se suele utilizar cuando usamos variables.
+
+V
+    * `prototype`
+        Es una forma de crear metodos en las clases para que no generemos por cada objeto un metodo diferente, si no que cuando creemos la clase tambien creamos el motodo con "prototype" lo que nos permitira usarlo para cada uno de los los objetos de esa clase: ejemplo 
+        ---code
+            funcion Objetito(name,lastName){
+                this.name = name,
+                this.lastName = lastName,
+            }
+            //aca se crea la clase Objetito
+            Objetito.prototype.saludo = funcion(){
+                return "Hola bienvenido " + this.name + " " + this.lastName;
+            }
+            // aca creamos el metodo con "prototype"
+
+            let jose = new Objetito(""Jose", "Pinto");
+            let juan = new Objetito("Juan", "Mesa");
+            // aca se crean las instancias de la clase
+
+            console.log(jose.saludo());
+            // aca llamamos el metodo para que lo muestre en la consola y muestra "Hola bienvenido Jose Pinto" , podriamos crear mas instancias y luego llamalas con de las misma manera y no tendriamos que crear mas metodos para hacer los mismo esto tambien es gracias a ".this".
+        ------
+
+    * _Constructors_ (de Clases)
+        es un metodo con el cual podemos inicializar un objeto a partir de una clase, en el podemos colocar los parametros y los metodos sin usar "prototype" ejemplo:
+        --code
+            class Clasesita {
+                constructor(name, lastName, password){
+                    this.name = name;
+                    this.lastName = lastName;
+                    this.password = password;
+                }
+                hola(){
+                    return "Hola " this.name;
+                }
+            }
+            var jose = new Clasesita("jose","Pinto","hola123")
+        --------------
+
+VI
+    * Funciones Callback
+        es la capacidad de pasar una función como argumento de otra la notacion es usar cb como parametro ejemplo:
+        --code
+            function saludar(name){
+                return "hola " + name + "!";
+            }
+            function callback(name,cb){
+                return cb(name);
+            }
+
+            callback("jose", saludar);
+            // "hola Jose!"
+        ----------
+
+End.
